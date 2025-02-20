@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
 const App = () => {
-  // Estados para manejar el monto del consumo, el porcentaje de propina y los cálculos
+  //estados para manejar el monto del consumo, el porcentaje de propina y los cálculos
   const [consumo, setConsumo] = useState('');
   const [porcentaje, setPorcentaje] = useState(0);
   const [propina, setPropina] = useState(0);
   const [total, setTotal] = useState(0);
 
-  // Función para calcular la propina y el total a pagar
+  //calcular la propina y el total a pagar
   const calcularPropina = (porcentajeSeleccionado: number) => {
     const montoConsumo = parseFloat(consumo);
     if (isNaN(montoConsumo)) {
@@ -24,7 +24,7 @@ const App = () => {
     setPorcentaje(porcentajeSeleccionado);
   };
 
-  // Función para manejar el porcentaje personalizado ingresado por el usuario
+  //porcentaje personalizado ingresado por el usuario
   const handlePorcentajePersonalizado = (text: string) => {
     const porcentajePersonalizado = parseFloat(text);
     if (!isNaN(porcentajePersonalizado)) {
@@ -35,17 +35,17 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Calculadora de Propinas</Text>
-      {/* Sección para ingresar el monto de consumo */}
+      {/* monto de consumo */}
       <Text style={styles.label}>Consumo</Text>
       <TextInput
         style={styles.input}
         placeholder="Monto de consumo"
         keyboardType="numeric"
         value={consumo}
-        onChangeText={(text) => setConsumo(text.replace(/[^0-9.]/g, ''))} // Solo números y punto decimal
+        onChangeText={(text) => setConsumo(text.replace(/[^0-9.]/g, ''))} //para ingresar solo números y punto decimal
       />
 
-      {/* Sección para seleccionar el porcentaje de propina */}
+      {/* porcentaje de la propina */}
       <Text style={styles.label}>Propina</Text>
       <View style={styles.buttonContainer}>
         <Button title="10%" onPress={() => calcularPropina(10)} />
@@ -53,7 +53,7 @@ const App = () => {
         <Button title="20%" onPress={() => calcularPropina(20)} />
       </View>
 
-      {/* Sección para ingresar un porcentaje personalizado */}
+      {/* porcentaje personalizado */}
       <Text style={styles.label}>Porcentaje personalizado</Text>
       <TextInput
         style={styles.input}
@@ -62,7 +62,7 @@ const App = () => {
         onChangeText={handlePorcentajePersonalizado}
       />
 
-      {/* Sección para mostrar los resultados */}
+      {/* resultados */}
       <View style={styles.resultContainer}>
         <Text style={styles.resultado}>Consumo: ${consumo}</Text>
         <Text style={styles.resultado}>Propina: ${propina.toFixed(2)}</Text>
@@ -72,14 +72,13 @@ const App = () => {
   );
 };
 
-// Estilos para la aplicación
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
     backgroundColor: '#f5f5f5',
-    justifyContent: 'center', // Centra los elementos en la pantalla
-    marginTop: -160, // Ajusta este valor según lo necesites (-10, -20, -30, etc.)
+    justifyContent: 'center',
+    marginTop: -160,
   },
   title: {
     fontSize: 24,
@@ -116,7 +115,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
-    elevation: 3, // Sombra en Android
+    elevation: 3, 
   },
   resultado: {
     fontSize: 18,
